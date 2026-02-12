@@ -28,19 +28,19 @@ For each non-suspended user subset $s$ on day $t$:
 
 **Fake share of activity (per tweet):**
 
-$$[
+$$
 y^{tweet}_{st} =
 \frac{\text{fake merged initiation}_{st} + \text{fake merged rt}_{st}}
 {\text{total tweets}_{st}}
-]$$
+$$
 
 **Fake per active user:**
 
-$$[
+$$
 y^{user}_{st} =
 \frac{\text{fake merged initiation}_{st} + \text{fake merged rt}_{st}}
 {\text{active users}_{st}}
-]$$
+$$
 
 The primary estimand is the causal effect of the January 6–12 suspension ramp on the misinformation rate among *non-suspended* users.
 
@@ -63,15 +63,20 @@ I additionally include:
 * A short pulse control for January 6–7.
 * Day-of-week fixed effects.
 * Controls for non-fake political and non-political content shares.
-  
-Let $T = $ January 12, 2021.
+
+Let
+$$T = $$
+January 12, 2021.
 
 Define event time:
 $$k_t = t - T$$
 
-Event time is binned to $k_t \in [-60, 60] \text{ with } k=-1$ omitted.
+Event time is binned to
+$$k_t \in [-60, 60] \text{ with } k=-1$$
+ omitted.
 
 The dynamic-dose-response specification is:
+
 $$y_t = \alpha + \sum_{k\neq-1}\delta_k(1\{k_t=k\}\cdot S_t) + \beta S_t + \gamma\text{Pulse}_t + \theta X_t + \mu_{\text{dow}} + \epsilon_t$$
 
 Where $\delta_k$ captures dynamic treatment intensity effects.
@@ -733,9 +738,9 @@ plot_outcome_and_exposure(w, y_tweet, "susp_intensity", "Pooled fake share per t
 ```
 
 
-    
+
 ![png](cleaned-project-2_files/cleaned-project-2_21_0.png)
-    
+
 
 
 
@@ -777,9 +782,9 @@ plot_volume_channels(w)
 ```
 
 
-    
+
 ![png](cleaned-project-2_files/cleaned-project-2_22_0.png)
-    
+
 
 
 ## Results
@@ -797,7 +802,7 @@ print("\n--- Main coefficient summaries (OLS HAC) ---")
 print(summ)
 ```
 
-    
+
     --- Main coefficient summaries (OLS HAC) ---
                  term      coef        se         p                        outcome
     0  susp_intensity -0.015641  0.003392  0.000004  fake_share_per_tweet (pooled)
@@ -816,9 +821,9 @@ plot_event_study(es_tweet, title=f"Pooled non-suspended | Fake share per tweet |
 ```
 
 
-    
+
 ![png](cleaned-project-2_files/cleaned-project-2_27_0.png)
-    
+
 
 
 In the pooled tweet-rate specification, the estimated coefficient on suspension intensity is -0.0156 (SE 0.0034, p < 0.001). Because the outcome is a rate (fake tweets / total tweets), this coefficient is a level effect on the fake-share rate. Interpreted literally, moving from 0 to 1 on the intensity scale (from "baseline suspended-user presence" to "full removal relative to baseline") corresponds to about a 1.56 percentage-point lower fake share of tweets among non-suspended users, holding controls and day-of-week fixed effects constant.
@@ -831,9 +836,9 @@ plot_event_study(es_user,  title=f"Pooled non-suspended | Fake per user | Pretre
 ```
 
 
-    
+
 ![png](cleaned-project-2_files/cleaned-project-2_29_0.png)
-    
+
 
 
 The per-user specification points in the same direction but is slightly less precisely-estimated. This provides suggestive evidence that intensity is associated with reduced misinformation per remaining active user, though inference is weaker than for the tweet-share outcome and pre-period intensity interactions are again jointly significant
@@ -846,7 +851,7 @@ print("\n--- Main susp_intensity rows ---")
 print(res)
 ```
 
-    
+
     --- Main susp_intensity rows ---
                              outcome      coef        se         p    pretrend_p
     0  fake_share_per_tweet (pooled) -0.015641  0.003392  0.000004  1.323511e-53
@@ -860,7 +865,7 @@ print("\n--- Table 2: Heterogeneity ---")
 print(table2)
 ```
 
-    
+
     --- Table 2: Heterogeneity ---
           Activity level susp_intensity (coef, SE) Pretrend p-value
     0      High activity       -0.0313*** (0.0020)           <0.001
@@ -878,9 +883,9 @@ _ = run_placebo(wide)
 ```
 
 
-    
+
 ![png](cleaned-project-2_files/cleaned-project-2_35_0.png)
-    
+
 
 
 While placebo intensity is a synthetic ramp, and therefore not definitive causal validation, it does support that the modeled results are specific to the suspension event.
@@ -892,7 +897,7 @@ print("\n--- Window Sensitivity ---")
 print(table3)
 ```
 
-    
+
     --- Window Sensitivity ---
        Window (± days) susp_intensity (coef, SE)
     0               60       -0.0184*** (0.0014)
@@ -908,7 +913,7 @@ print("\n--- Control Robustness ---")
 print(table4)
 ```
 
-    
+
     --- Control Robustness ---
                 Controls susp_intensity (coef, SE)
     0                all       -0.0215*** (0.0018)
