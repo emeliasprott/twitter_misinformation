@@ -120,7 +120,7 @@ During the fully treated period, observed misinformation-linked output was appro
 
 ![Observed and modeled no-suspension paths](figures/observed_vs_counterfactual.png)
 
-*The seven-day observed average remains below the modeled no-suspension path throughout the post-treatment period. Lighter daily lines retain the underlying variation without implying day-level precision.*
+*The seven-day observed average remains below the modeled no-suspension path throughout the post-treatment period. Lighter daily lines represent underlying variation.*
 
 ![Cumulative misinformation prevented](figures/cumulative_prevented.png)
 
