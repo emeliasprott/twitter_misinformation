@@ -166,7 +166,7 @@ The evidence is strongest for the direction and approximate cumulative scale of 
 ## Project structure
 
 | File              | Component                     | Purpose                                                                                                                                                   |
-| ----------------- | ----------------------------- |
+| ----------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `data-prep.ipynb` | Data preparation notebook     | Reconstructs mutually exclusive account groups from overlapping replication aggregates and inspects collection anomalies.                                 |
 | `eda.ipynb`       | Exploratory analysis notebook | Builds the analytic panel, distinguishes structural zeroes from disruptions, and evaluates time-series dynamics, donor relationships, and GDELT features. |
 | `modeling.pynb`   | Modeling notebook             | Selects and validates the two-stage model, estimates the counterfactual, and generates the final figures and tables.                                      |
